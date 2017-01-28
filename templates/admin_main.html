@@ -1,0 +1,44 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/mystyle1.css')}}">
+  </head>
+  
+  <body >
+    <table width="1024" height="610" bgcolor="#1fa0eb" align="center" cellspacing="0" cellpadding="0"><tr><td> 
+    <table width="1024" height="610" bgcolor="#ffffff" align="center" cellspacing="0" cellpadding="0">
+    <tr><td>
+    <table width="1016" height="602" bgcolor="#8dd8f8" align="center">
+    <tr><td>
+    <table align="center">
+    <tr><td width="724" height="80" style="FILTER: blur(direction=135,strength=8)" align="center"><i><font size="7" face="华文行楷" color="#2e0df7">欢迎使用教务管理系统！</font></i></td></tr>
+    </table>
+    </td></tr>
+    <tr><td><table background="{{url_for('static', filename='image/tips.gif')}}" align="center" width="598" height="169">
+    <tr><td width="50"></td><td height="59"></td></tr>
+    <tr ><td width="50"></td><td height="20" align="left"><font color="#48f9f9"><em><strong>欢迎你{{data['username']}}</strong></em></font></td></tr>
+    <tr><td width="50"></td><td height="8"></td></tr>
+    <tr ><td width="50"></td><td height="20" align="left"><font color="#808080"><em><strong><font color="#6639dd">上次登录时间是：</font>{{ data['lasttime'] }}</strong></em></font></td></tr>
+    <tr><td width="50"></td><td height="50"></td></tr>
+    </table></td></tr>
+     <tr><td height="50"></td></tr>
+    <tr><td>
+    <table  class="table1" bgcolor="#8dd8f8" width="650" border="1" cellpadding="0" cellspacing="0" align="center"> 
+    <tr><th colspan="2" height="25" align="center"><font  face="黑体" color="#044a85" size="5">系统基本信息</font></th></tr>
+    <tr align="center"><td height="25"><font size="4" face="楷体">当前系统中共有学生数：{{ data['count_s'] }}</font></td><td width="80" align="center"><a href="{{url_for('admin_stu')}}"><img border="0" src="{{ url_for('static',filename='image/scan.gif')}}"/></a></td></tr> 
+    <tr align="center"><td height="25"><font size="4" face="楷体">当前系统中共有教师数：{{ data['count_t'] }}</font></td><td><a href="{{url_for('admin_tea')}}"><img border="0" src="{{url_for('static', filename='image/scan.gif')}}"/></a></td></tr> 
+
+    <tr align="center"><td height="25"><font size="4" face="楷体">当前系统中共有课程数：{{ data['count_c'] }}</font></td><td><a href="{{url_for('admin_cou')}}"><img border="0" src="{{url_for('static', filename='image/scan.gif')}}"/></a></td></tr> 
+
+   <tr align="center"><td height="25"><font size="4" face="楷体">当前是<font color="red">{{ data['period'] }}</font>时期</font></td><td><a href="{{url_for('admin_cou_set')}}"><img border="0" src="{{url_for('static', filename='image/scan.gif')}}"/></a></td></tr> 
+   </table>
+    </td></tr>
+    <tr><td height="80">&nbsp;</td></tr>
+    </table></td></tr></table></td></tr></table>
+	</div>
+  </body>
+</html>

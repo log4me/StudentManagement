@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script type="text/javascript">
+     <!--
+  function isValid()
+  {	
+  	if(formdelcou.cno.value == "")
+  	{	
+  	  alert("课序号不能为空！"); 
+ 		  document.formdelcou.elements[0].focus();
+  		return  false;
+  	}
+  	formdelcou.submit();
+ }
+  -->
+  </script>		
+		
+  <script type="text/javascript">
+   function   shuru(txt){   
+     if(isNaN(txt)){   
+          window.alert("请输入数字"); 
+          document.formaddcou.elements(2).focus();    
+          }  
+    }  
+   </script>
+  </head>
+  
+  <body bgcolor="#8dd8f8">
+  <div align="center"><font size="5" color="#000080" face="华文楷体"><b>已选课程信息如下：<br><br></b></font></div>
+     <table class="table1" border="1" cellspacing="0" cellpadding="0" align="center">
+     <tr align="center"><th width="100">课序号</th><th width="200">课程名</th><th width="80">课程学分</th><th width="100">任课教师</th><th width="100">上课时间</th><th width="100">上课教室</th><th width="100">删除</th></tr>
+{% if cous: %}
+  {% for cou in cous : %}
+        <tr align="center">
+		    		<td>{{ cou[0] }}</td>
+		    		<td>{{ cou[1] }}</td>
+		       	<td>{{ cou[2] }}</td>
+            <td>{{ cou[3] }}</td>
+            <td>星期{{ cou[4][0] }}第{{ cou[4][1] }}节</td>
+            <td>{{ cou[5] }}</td>
+            <td><a href="{{ url_for('student_cho_del',cno=cou[0]) }}" method='post'>删除</a></td>
+				</tr>
+  {% endfor %}
+{% else : %}
+	<tr><th colspan="4">无课程信息！</th></tr>
+{% endif %}
+	</table>
+	<br><br><br>
+  <div align="center">
+  <form name="formdelcou" action="{{ url_for('student_cho_sub') }}" method="post" onsubmit="return isValid(this);">
+    <table class="table1" border="1" width="450" align="center" cellspacing="0" cellpadding="0">
+    <tr><th height="25" colspan="2">提交选课信息</th></tr>
+    <tr><td height="25">课程序号：</td><td><input type="text" name="cno"/> </td></tr>
+    <tr><td height="25"><input type="reset" value="重&nbsp&nbsp置"/></td><td><input type="submit" value="提&nbsp&nbsp交"/></td></tr>
+    </table>
+    </form>
+
+  </body>
+</html>

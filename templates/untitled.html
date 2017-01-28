@@ -1,0 +1,54 @@
+<form name="formaddstu" role="form" action="{{ url_for('admin_stu_add') }}" method="post" onsubmit="return isValid(this);">
+    <table>
+    <tr>
+        <div align="center" class="form-group"> 
+            <caption>请输入学生信息：</caption>
+        </div>
+    </tr>
+    <tr>
+    <div class="form-group">
+       <td><label for="name">学号：</label></td>
+       <td><input type="text" name="sno" id="sno" placeholder="请输入学号"></td>
+    </div>
+    </tr>
+    <div class="form-group">
+        <label for="name">姓名：</label>
+        <input type="text" name="sname" id="sname" placeholder="请输入姓名">
+    </div>
+    <div class="form-group">
+        <label for="name">性别：</label>
+       <select class="form-control" name="ssex">
+         <option>男</option>
+         <option>女</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="name">年龄：</label>
+        <input type="text" name="sage" id="sge" placeholder="请输入年龄">
+    </div>
+    <div class="form-group">
+        <label for="name">专业：</label>
+        <SELECT name="sdept">
+            <OPTION>计算机科学与技术</OPTION>
+            <OPTION>网络工程</OPTION>
+            <OPTION>物联网</OPTION>
+            <OPTION>嵌入式软件工程</OPTION>
+            <OPTION>软件工程</OPTION>
+            <OPTION>信息管理</OPTION>
+        </SELECT>
+    </div>
+    <div class="form-group">
+        <label for="name">手机号：</label>
+        <input type="text" name="sphone" id="sphone" placeholder="请输入手机号">
+    </div>
+    <div class="form-group">
+        <label for="name">密码：</label>
+        <input type="text" name="spassword" id="spassword" placeholder="请输入密码">
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">提交</button>
+        </div>
+    </div>
+    </table>
+    </form>

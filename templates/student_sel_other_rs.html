@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+  
+  <body bgcolor="#8dd8f8">
+     <div align="center"><font size="5" color="#000080" face="华文楷体"><b>学生信息如下：<br><br></b></font></div>
+     <table class="table1" border="1" cellspacing="0" cellpadding="0" align="center">
+     
+	<tr align="center"><th >学号</th><th>姓名</th><th>性别</th><th>年龄</th><th>专业</th><th>电话</th><th>总学分</th><th>平均分</th><th>专业排名</th><th>选课信息</th></tr>
+     	{% if not data : %}
+			<tr><th colspan="11">无符合条件学生信息！</th></tr>
+		{% else %}
+     		{% for student in data : %}
+            	<tr align="center">
+		    		<td>{{ student['sno'] }}</td>
+		    		<td>{{ student['sname'] }}</td>
+					<td>{{ student['ssex'] }}</td>
+					<td>{{ student['sage'] }}</td>
+		 	    	<td>{{ student['sphone']}}</td>
+		       		<td>{{ student['sdept'] }}</td>
+					<td>{{ student['sum_credit'] }}</td>
+					<td>{{ student['avg_grade'] }}</td>
+					<td>{{ student['rank'] }}</td>
+					<td><a href="{{ url_for('student_sel_other_cours',sno=student['sno']) }}">查看</a></td>
+				</tr>
+				{% endfor %}
+		{% endif %}
+	</table>
+	</body>
+</html>
+	

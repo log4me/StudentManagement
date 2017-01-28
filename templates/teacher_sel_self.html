@@ -1,0 +1,42 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  </head>
+  
+  <body bgcolor="#8dd8f8">
+    <div align="center"><strong><font size="5" face="华文楷体" color="#0000a0">个人基本信息</font></strong></div><br/>
+    <table class="table1" border="1" align="center">
+    <tr align="center"><th width="100">工号</th><th width="100">姓名</th><th width="100">密码</th></tr>
+    <tr align="center"><td width="100">{{ tdata['tno'] }}</td><td width="100">{{ tdata['tname'] }}</td><td width="100">{{ tdata['tpassword'] }}</td></tr>
+    </table>
+    <br/>
+    <div align="center"><font size="5" color="#000080" face="华文楷体"><b>开设课程信息如下：</b></font></div>
+    {% if cous : %}
+     <table class="table1" border="1" cellspacing="0" cellpadding="0" align="center">
+     
+        <tr align="center"><th width="100">课序号</th><th width="150">课程名</th><th width="80">课程学分</th><th>平均分</th><th width="80">最高分</th><th width="80">最低分</th><th width="80">选课人数</th><th width="80">详细信息</th></tr>
+        {% for cou in cous : %}
+            	<tr align="center">
+		    		  <td>{{ cou[0] }}</td>
+		    		  <td>{{ cou[1] }}</td>
+		       		<td>{{ cou[2] }}</td>
+					    <td>{{ score[cou[0]]['avg_grade'] }}</td>
+					    <td>{{ score[cou[0]]['max_grade'] }}</td>
+		    		  <td>{{ score[cou[0]]['min_grade'] }}</td>
+					    <td>{{ score[cou[0]]['count'] }}</td>
+					    <td><a href="{{ url_for('teacher_sel_self_coul',cno=cou[0]) }}" >查看</a></td>
+				  </tr>
+        {% endfor %}
+      {% else : %}
+      <div align="center">
+	        <tr align="center"><th colspan="10" align="center">您尚未开设课程</th></tr>
+        </div>
+      {% endif %}
+
+	</table>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>3D Tag Cloud</title>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<!-- SWFObject embed by Geoff Stearns geoff@deconcept.com http://blog.deconcept.com/swfobject/ -->
+	<script type="text/javascript" src="{{url_for('static',filename='javascript/swfobject.js') }}"></script>
+	<style type="text/css">
+		body { background-color: "#8dd8f8"; padding: 20px; } 
+	</style>
+</head>
+
+<body bgcolor="#8dd8f8">
+
+	<div id="flashcontent">This will be shown to users with no Flash or Javascript.</div>
+	<div align="center"><font size=6 color="orange">{{ title }}</font></div>
+	<script type="text/javascript">
+		var so = new SWFObject("{{ url_for('static',filename='swf/tagcloud.swf') }}", "tagcloud", "600", "400", "7", "#ffffff");
+		// uncomment next line to enable transparency
+		so.addParam("wmode", "transparent");
+		so.addVariable("tcolor", "0x333333");
+		so.addVariable("mode", "tags");
+		so.addVariable("distr", "true");
+		so.addVariable("tspeed", "100");
+		so.addVariable("tagcloud","{{ tags }}")
+		//so.addVariable("tagcloud", "<tags><a href='http://www.google.com' style='22' color='0xff0000' hicolor='0x00cc00'>Google</a><a href='http://www.baidu.com' style='12'>Baidu</a><a href='http://www.sina.com.cn' style='16'>Sina</a><a href='http://www.apple.com.cn' style='14'>Apple</a><a href='http://wsi.gucas.ac.cn' style='12'>WSI</a><a href='http://www.bit.edu.cn' style='12'>BIT</a><a href='http://www.sony.com.cn' style='9'>SONY</a><a href='http://www.gucas.ac.cn' style='10'>GUCAS</a><a href='http://www.sohu.com.cn' style='10'>Sohu</a><a href='http://www.renren.com' style='12'>renren</a><a href='http://www.qq.com' style='12'>QQ</a></tags>");
+		so.write("flashcontent");
+	</script>
+
+</body>
+
+</html>

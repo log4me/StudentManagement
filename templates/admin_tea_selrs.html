@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    
+    <meta charset=utf-8>
+    <title></title>  
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+  </head>
+   <body bgcolor="#8dd8f8">
+
+  <div align="center"><font size="5" color="#000080" face="华文楷体"><b>教师信息如下：<br><br><br></b></font></div>
+     <table class="table1" border="1" cellspacing="0" cellpadding="0" align="center">
+     
+     <tr align="center"><th width="80">工号</th><th width="100">姓名</th><th width="80">密码</th><th width="120">手机号</th><th width="100">开设课程</th><th width="50">修改</th><th width="50">删除</th></tr>
+     		{% if not data : %}
+				<tr><th colspan="10">无教师信息！</th></tr>
+			{% else :%}
+     			{% for tea in data: %}
+ 		           	<tr align="center">
+			    		<td>{{ tea['tno']}}</td>
+		    			<td>{{ tea['tname'] }}</td>
+		       		
+						<td>{{ tea['tpassword'] }}</td>
+						<td>{{ tea['tphone'] }}</td>
+						<td><A href="{{ url_for('teacher_cho_seted',tno=tea['tno']) }}">查看</A></td>
+						<td><a href="{{ url_for('admin_tea_upd',tno=tea['tno']) }}" >修改</a></td>
+                        <td><A href="{{ url_for('admin_tea_del',tno=tea['tno']) }}">删除</A></td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+	</table>
+	</body>
+</html>

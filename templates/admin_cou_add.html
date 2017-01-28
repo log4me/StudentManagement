@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+ <script type="text/javascript">
+ <!--
+  function isValid()
+  {	
+  	if(document.formaddcou.cno.value == "")
+  	{	
+    	alert("课序号不能为空！"); 
+   		document.formaddcou.elements[0].focus();
+  		return  false;
+  	}
+  	if(document.formaddcou.cname.value == "")
+  	{
+  		alert("课程名不能为空！");
+  		document.formaddcou.elements[1].focus();
+  		return  false; 
+  	}
+  	if(formaddcou.ccredit.value == "")
+  	{
+  		window.alert("课程学分称不能为空！");
+  		document.formaddcou.elements[2].focus();
+  		return  false; 
+  	}
+  	formaddcou.submit();
+ }
+  function isValid2()
+  {	
+  	if(document.formaddcouxls.filepath.value == "")
+  	{	
+  		alert("请选择文件"); 
+ 		
+  		return  false;
+  	}
+  	formaddcouxls.submit();
+ }
+ 
+   function   credit_test(txt){   
+     if(isNaN(txt)){   
+          alert("学分只能输入数字"); 
+          document.formaddcou.elements[2].focus(); 
+          return  false;   
+          }  
+    }  
+     -->
+   </script>
+  </head>
+  
+  <body bgcolor="#8dd8f8">
+  <form name="formaddcou" action="{{ url_for('admin_cou_add') }}" method="post" onsubmit="return isValid(this);"><div align="center">
+  <font size="5" face="华文楷体" color="#0000a0"><strong>添加课程信息</strong></font></div>
+  <br/><br/>
+  <table class="table1" border="1" width="600" height="120" align="center" cellspacing="0" cellpadding="0">
+    <tr align="center"><th colspan="2" height="25"><font size="4" face="宋体"><strong>请</strong></font><font size="4" face="宋体">输入课程信息</font></th></tr>
+    <tr><td height="25">课序号：</td><td><input type="text" name="cno"/></td></tr>
+    <tr><td height="25">课程名称：</td><td><input type="text" name="cname"/></td></tr>
+    <tr><td height="25">课程学分：</td><td><input type="text" name="ccredit" onchange="credit_test(this.value)"/></td></tr>
+    <tr><td height="25"><input type="reset" value="重&nbsp&nbsp置"/></td><td><input type="submit" value="提&nbsp&nbsp交"/></td></tr>
+    </table>
+    </form>
+    <br/><br/><br/>
+    <form name="formaddcouxls" action="{{ url_for('admin_cou_import') }}" method="post" onsubmit="return isValid2(this);" enctype="multipart/form-data">
+    <table class="table1" border="1" width="600" align="center" cellspacing="0" cellpadding="0">
+    <tr height="25"><th colspan="2">从Excel导入课程<input type="hidden" name="action" value="newcourse"></th></tr>
+    <tr height="25"><td>请选择路径：</td><td><input type="file" name="import_xls" /></td></tr>
+    <tr height="25"><td height="25"><input type="reset" value="重&nbsp&nbsp置"/></td><td><input type="submit" value="提&nbsp&nbsp交"/></td></tr>
+    </table>
+    </form><div align="center">
+    <strong><font color="#ff0000">提示：从Excel导入课程必须符合课序号、课程名、学分三列的格式！
+  </font></strong></div></body>
+</html>

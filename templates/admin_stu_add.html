@@ -1,0 +1,106 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+ <SCRIPT Language="javascript">
+ <!--
+  function isValid()
+  {	
+  	if(formaddstu.sno.value == "")
+  	{	
+  		window.alert("学号不能为空！"); 
+ 		document.formaddstu.elements[0].focus();
+  		return  false;
+  	}
+  	if(formaddstu.sname.value == "")
+  	{
+  		window.alert("姓名不能为空！");
+  		document.formaddstu.elements[1].focus();
+  		return  false; 
+  	}
+  	
+    if(formaddstu.ssex.value == "")
+    {
+      window.alert("性别不能为空！");
+      document.formaddstu.elements[2].focus();
+      return  false; 
+    }
+    if(formaddstu.sage.value == "")
+    {
+      window.alert("年龄不能为空！");
+      document.formaddstu.elements[3].focus();
+      return  false; 
+    }
+  	if(formaddstu.sdept.value == "")
+  	{
+  		window.alert("专业不能为空！");
+  		document.formaddstu.elements[4].focus();
+  		return  false; 
+  	}
+  	if(formaddstu.spassword.value == "")
+  	{
+  		window.alert("密码不能为空！");
+  		document.formaddstu.elements[6].focus();
+  		return  false; 
+  	}
+  	formaddstu.submit();
+ }
+  -->
+  </SCRIPT>		
+<SCRIPT Language="javascript">
+ <!--
+  function isValid2()
+  {	
+  	if(formaddcouxls.filepath.value == "")
+  	{	
+  		window.alert("请选择文件"); 
+ 		
+  		return  false;
+  	}
+  	 formaddcouxls.submit();
+ }
+  -->
+  </SCRIPT>	
+  </head>
+  
+  <body bgcolor="#8dd8f8">
+  <form name="formaddstu" role="form" action="{{ url_for('admin_stu_add') }}" method="post" onsubmit="return isValid(this);"><div align="center"> 
+    </div><table class="table1" border="1" width="600" height="120" align="center" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr><th colspan="2" height="25"><font size="4">请输入学生信息</font></th></tr>
+    <tr><td height="20">学生学号：</td><td><input type="text" name="sno"/></td></tr>
+    <tr><td height="20">学生姓名：</td><td><input type="text" name="sname"/></td></tr>
+    <tr><td height="20">性别：</td><td><input type="text" name="ssex"/></td></tr>
+    <tr><td height="20">学生年龄：</td><td><input type="text" name="sage"/></td></tr>
+    <tr><td height="20">学生专业：</td>
+    <td><SELECT name="sdept">
+     <OPTION>计算机科学与技术</OPTION>
+     <OPTION>网络工程</OPTION>
+     <OPTION>物联网</OPTION>
+     <OPTION>嵌入式软件工程</OPTION>
+     <OPTION>软件工程</OPTION>
+     <OPTION>信息管理</OPTION>
+     </SELECT></td></tr>
+    <tr><td height="20">手机号：</td><td><input type="text" name="sphone"/></td></tr>
+    <tr><td height="20">登录密码：</td><td><input type="text" name="spassword"/>
+    <input type="hidden" name="action" value="new"></td></tr>
+    <tr><td height="20"><input type="reset" value="重&nbsp&nbsp置"/></td><td><input type="submit" value="提&nbsp&nbsp交"/></td></tr>
+    </tbody>
+    </table>
+    
+    </form>
+    <br/><br/><br/>
+    <form name="formaddcouxls" action="{{ url_for('admin_stu_import') }}" method="post" onsubmit="return isValid2(this);" enctype="multipart/form-data">
+    <table class="table1" border="1" width="600" align="center" cellspacing="0" cellpadding="0">
+    <tr height="25"><th colspan="2">从Excel导入学生<input type="hidden" name="action" value="newstudent"></th></tr>
+    <tr height="25"><td>请选择路径：</td><td><input type="file" name="import_xls" /></td></tr>
+    <tr height="25"><td height="25"><input type="reset" value="重&nbsp&nbsp置"/></td><td><input type="submit" value="提&nbsp&nbsp交"/></td></tr>
+    </table>
+    </form><div align="center">
+    <strong><font color="#ff0000">提示：从Excel导入学生必须符合学号、姓名、性别、年龄、系别，电话号码，密码七列的格式！
+  </font></strong></div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  </head>
+  <body bgcolor="#8dd8f8">
+   <div align="center"><font size="5" color="#000080" face="华文楷体"><b>{{ sno }}选课信息如下：<br><br></b></font></div>
+     <table class="table1" border="1" cellspacing="0" cellpadding="0" align="center">
+           <tr align="center"><th width="100">课序号</th><th width="100">课程名</th><th width="100">课程学分</th><th width="100">成绩</th><th width="100">排名</th><th width="100">上课地点</th><th width="100">上课时间</th></tr>
+     {% if cous : %}
+      {% for cou in cous : %}
+              <tr align="center">
+                <td>{{ cou[0] }}</td>
+                <td>{{ cou[1] }}</td>
+                <td>{{ cou[2] }}</td>
+              {% if cou[6]=='已提交' : %}
+                <td>{{ cou[5] }}</td>
+                <td>{{ data[cou[0]]['rank'] }}</td>
+              {% else : %}
+                <td>成绩未提交</td>
+                <td>成绩未提交</td>
+              {% endif %}
+                <td>{{ cou[4] }}</td>
+                <td>星期{{ cou[3][0] }}第{{ cou[3][1] }}节</td>
+        </tr>
+      {% endfor %}
+  
+    {% else : %}
+  <tr><th colspan="6">无课程信息！</th></tr>
+    {% endif %}
+	</table>
+  </body>
+</html>
